@@ -9,6 +9,8 @@ x 20
 box
 0 0 0 200 100 400
 display
+save
+a.png
 #clear everything, test sphere
 clear
 pop
@@ -18,6 +20,8 @@ move
 sphere
 0 0 0 200
 display
+save
+b.png
 #clear everything, test sphere again
 clear
 rotate
@@ -27,6 +31,8 @@ y 30
 sphere
 0 0 0 200
 display
+save
+c.png
 #clear everything, test torus
 clear
 pop
@@ -36,6 +42,8 @@ move
 torus
 0 0 0 50 150
 display
+save
+d.png
 #clear everything, test torus again
 clear
 rotate
@@ -47,6 +55,8 @@ x 45
 torus
 0 0 0 75 150
 display
+save
+e.png
 clear
 pop
 #BODY

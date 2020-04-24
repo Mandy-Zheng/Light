@@ -22,19 +22,50 @@ SPECULAR_EXP = 4
 
 #lighting functions
 def get_lighting(normal, view, ambient, light, areflect, dreflect, sreflect ):
-    return [0, 0, 0]
+    Ia = calculate_ambient(ambient, areflect)
+    Id = calculate_diffuse(light, dreflect, normal)
+    Is = calculate_specular(light, sreflect, view, normal)
+    shade=[int(Ia[0]+Id[0]+Is[0]),int(Ia[1]+Id[1]+Is[1]),int(Ia[2]+Id[2]+Is[2])]
+
+    limit_color(shade)
+    return shade
 
 def calculate_ambient(alight, areflect):
-    pass
+    Iambient=[alight[0]*areflect[0],alight[1]*areflect[1],alight[2]*areflect[2]]
+    return Iambient
 
 def calculate_diffuse(light, dreflect, normal):
-    pass
+    normalize(normal)
+    normalize(light[LOCATION])
+    product = dot_product(normal, light[LOCATION])
+    if (product < 0):
+        product = 0
+    Idiffuse = [light[COLOR][0]*dreflect[0]*product,light[COLOR][1]*dreflect[1]*product,light[COLOR][2]*dreflect[2]*product]
+    return Idiffuse
 
 def calculate_specular(light, sreflect, view, normal):
-    pass
+    normalize(normal)
+    normalize(light[LOCATION])
+    product = dot_product(normal, light[LOCATION])
+    if (product<0):
+        product=0
+    temp=[]
+    Ispecular=[]
+    for i in range(3):
+        temp.append(2*normal[i]*product - light[LOCATION][i])
+    v=normalize(view)
+    t=normalize(temp)
+    cosAlpha=dot_product(temp,view)
+    if (cosAlpha<0):
+        cosAlpha=0
+    for i in range(3):
+        Ispecular.append(sreflect[i] * light[COLOR][i] * math.pow(cosAlpha,SPECULAR_EXP))
+    return Ispecular
 
 def limit_color(color):
-    pass
+    for i in range(3):
+        if (color[i]>255):
+            color[i]=color[i]%256
 
 #vector functions
 #normalize vetor, should modify the parameter
