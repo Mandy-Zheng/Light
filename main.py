@@ -9,9 +9,9 @@ import math
 view = [0,
         0,
         1];
-ambient = [50,
-           50,
-           50]
+ambient = [200,
+           200,
+           200]
 light = [[0.5,
           0.75,
           1],
@@ -39,4 +39,4 @@ t = new_matrix()
 ident(t)
 csystems = [ t ]
 
-parse_file( 'nscript.txt', edges, polygons, csystems, screen, zbuffer, color, view, ambient, light, areflect, dreflect, sreflect)
+parse_file( 'script', edges, polygons, csystems, screen, zbuffer, color, view, ambient, light, areflect, dreflect, sreflect)
