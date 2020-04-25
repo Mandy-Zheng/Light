@@ -88,6 +88,17 @@ def parse_file( fname, edges, polygons, csystems, screen, zbuffer, color,view, a
 
         elif line == 'sphere':
             #print 'SPHERE\t' + str(args)
+
+            '''if(float(args[3])==25):
+                #print(1)
+                light[1][0]=244
+                light[1][1]=242
+                light[1][2]=206
+            else:
+                #print(2)
+                light[1][0]=250
+                light[1][1]=154
+                light[1][2]=247'''
             add_sphere(polygons,
                        float(args[0]), float(args[1]), float(args[2]),
                        float(args[3]), step_3d)

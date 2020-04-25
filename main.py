@@ -9,9 +9,9 @@ import math
 view = [0,
         0,
         1];
-ambient = [200,
-           200,
-           200]
+ambient = [50,
+           50,
+           50]
 light = [[0.5,
           0.75,
           1],
